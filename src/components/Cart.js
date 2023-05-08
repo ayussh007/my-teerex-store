@@ -112,4 +112,5 @@ const Cart =  ({cartItems, handleAdd, removeFromCart, handleDelete, totalQuantit
     </>
     );
 }
+
 export default Cart;
