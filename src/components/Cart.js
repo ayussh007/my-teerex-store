@@ -4,18 +4,26 @@ import "./Cart.css";
 import Header from "./Header";
 import Products from "./Products";
 
+// represents the destructuring of props passed to the Cart component.
 const Cart =  ({cartItems, handleAdd, removeFromCart, handleDelete, totalQuantity}) => {
-
+  
+  // Function to calculate the total value of the items in the cart
+  // declared with a default parameter cartItems = []. This syntax means that if no argument is passed to the function when it is called, 
+  // the cartItems parameter will default to an empty array ([]).
   const getTotalCartValue = (cartItems = []) => {
+    // If the cart is empty, return 0
     if (!cartItems.length) return 0;
-
+    
+    // Calculate the total value by multiplying the price of each item with its quantity in the cart,
+    // and then summing up the results using the reduce method
     const total = cartItems
       .map((item) => item.price * item.productinCart)
       .reduce((total, n) => total + n);
 
     return total;
   };
-
+  
+ // Calculate the total price of the cart items
   const totalPrice = getTotalCartValue(cartItems);
 
   return (
