@@ -4,6 +4,8 @@ import "./Filter.css";
 //receives two props: filters and onFilterChange
 const Filter = ({ filters, onFilterChange }) => {
     
+    //ensures that when a filter value changes in the <Filter> component, the handleFilterChange function is triggered, and it updates the filters object and calls 
+    //the onFilterChange callback to inform the parent component about the filter change.
     // Event handler for filter changes
     const handleFilterChange = (event) => {
         // Get the name and value from the event target
