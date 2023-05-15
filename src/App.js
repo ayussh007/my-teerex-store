@@ -16,6 +16,10 @@ function App() {
 
   const [cartItems, setCartItems] = useState([]);
   
+
+  //The code snippet overall checks the availability of a product and adds it to the cart if it is available and not already present. It also provides appropriate error 
+  //messages to the user if the product is out of stock or already in the cart.
+
   const handleAddToCart = (product) => {
     // Find if the product is already in the cart based on its ID
     const productAvailable = cartItems.find((item) => item.id === product.id);
@@ -39,6 +43,10 @@ function App() {
       alert("Product is out of stock!");
   }
   };
+   
+
+  // The code snippet overall checks the availability of a product in the cart and increases its quantity by updating the cartItems state if the conditions are met. 
+  //It also provides an appropriate error message to the user if the product is out of stock or the quantity in the cart exceeds the available quantity
 
   const handleAddition = (product) => {
      // Find if the product is already in the cart based on its ID
@@ -57,6 +65,10 @@ function App() {
       alert("Product is out of stock!");
     }
   };
+
+
+  //The code snippet overall checks the quantity of a product in the cart and either removes the product from the cart if the quantity is 1 or decrements the quantity 
+  //if it is greater than 1. It updates the cartItems state accordingly.
 
   const removeFromCart = (product) => {
     // Find if the product is already in the cart based on its ID
@@ -81,18 +93,25 @@ function App() {
     }
   };
 
+
+  //The code snippet overall removes a product from the cart by filtering out the item with the matching ID from the cartItems array and updates the 
+  //cartItems state accordingly.
   const handleDelete = (product) => {
     // Remove the product from the cart by filtering out the item with the matching ID and update the state with the filtered array, 
     setCartItems(cartItems.filter((item) => item.id !== product.id));
-    setCartItems(cartItems.filter((item) => item.id !== product.id));
   };
 
+
+ //The code snippet overall handles the case where the cart is empty and returns 0 as the total quantity in that scenario.
   const totalQuantity = (cartItems) => {
     // Check if the cartItems array is empty If it is, it means there are no items in the cart, so the function returns 0 as the total quantity.
     if (!cartItems.length) return 0;
     
-     // Map through the cartItems array and extract the productinCart value for each item
-    const totalItem = cartItems
+   
+   // The code snippet overall maps through the cartItems array to extract the productinCart values for each item, and then uses reduce to calculate the sum of those 
+   // values, resulting in the total quantity of items in the cart.
+   // Map through the cartItems array and extract the productinCart value for each item
+   const totalItem = cartItems
       .map((item) => item.productinCart)
        // Use reduce to sum up the productinCart values
       .reduce((totalItem, n) => totalItem + n);
@@ -113,7 +132,9 @@ function App() {
             totalQuantity={totalQuantity}
           />
         </Route>
+         //This Route component is set to render when the current URL exactly matches the "/cart" path
         <Route exact path="/cart">
+         //it receives props such as cartItems, handleAdd, removeFromCart, handleDelete, and totalQuantity.
         <Cart
             cartItems={cartItems}
             handleAdd={handleAddition}
