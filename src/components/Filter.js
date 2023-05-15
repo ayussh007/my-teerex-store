@@ -1,19 +1,24 @@
 import React from 'react';
 import "./Filter.css";
 
-
+//receives two props: filters and onFilterChange
 const Filter = ({ filters, onFilterChange }) => {
     
+    // Event handler for filter changes
     const handleFilterChange = (event) => {
+        // Get the name and value from the event target
         const name = event.target.name;
         console.log(name,"name ");
         const value = event.target.value;
         console.log(value, "color");
-
+        
+        // Create updated filters object with the new filter value
         const updatedFilters = {
             ...filters,
             [name]: value
           };
+          // Call the onFilterChange callback to notify parent component
+          //This callback is responsible for handling the filter change in the parent component.
           onFilterChange(name, value);
         console.log("updated filter:", updatedFilters)
       };
@@ -23,6 +28,7 @@ const Filter = ({ filters, onFilterChange }) => {
 <div className='firstFilter'>
       <h4 className='headings'>Colour</h4>
         <div className="check">
+            //The onChange event is attached to the handleFilterChange function, which will be called when the checkbox value changes. 
             <input type="checkbox" name="color"  onChange={handleFilterChange} value="Red"  /> <label>Red</label>
         </div>
         <div className="check">
