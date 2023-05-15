@@ -7,23 +7,23 @@ const Filter = ({ filters, onFilterChange }) => {
     //ensures that when a filter value changes in the <Filter> component, the handleFilterChange function is triggered, and it updates the filters object and calls 
     //the onFilterChange callback to inform the parent component about the filter change.
     // Event handler for filter changes
-    const handleFilterChange = (event) => {
-        // Get the name and value from the event target
-        const name = event.target.name;
-        console.log(name,"name ");
-        const value = event.target.value;
-        console.log(value, "color");
-        
-        // Create updated filters object with the new filter value
-        const updatedFilters = {
-            ...filters,
-            [name]: value
-          };
-          // Call the onFilterChange callback to notify parent component
-          //This callback is responsible for handling the filter change in the parent component.
-          onFilterChange(name, value);
-        console.log("updated filter:", updatedFilters)
-      };
+  const handleFilterChange = (event) => {
+    const name = event.target.name;
+    console.log(name, "name");
+    const value = event.target.value;
+    console.log(value, "color");
+  
+    // Check if the filter is being deselected
+    const isDeselected = filters[name] === value;
+  
+    const updatedFilters = {
+      ...filters,
+      [name]: isDeselected ? '' : value // Set the value to an empty string if it's deselected
+    };
+  
+    onFilterChange(name, isDeselected ? '' : value);
+    console.log("updated filter:", updatedFilters);
+  };
 
   return (
     <div>
