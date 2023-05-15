@@ -5,6 +5,8 @@ import { useHistory} from "react-router-dom";
 import "./Header.css";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
+//The children prop is being used to render any content that is passed between the opening and closing tags of the Header component when it is used in another component. 
+//This allows you to customize and include additional content within the Header component.
 const Header = ({children}) => {
 
   const history = useHistory()
